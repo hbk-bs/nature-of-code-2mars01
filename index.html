@@ -3,54 +3,69 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>index</title>
+	<title>Bubbles</title>
 	<style>
 		/* Basic styles for readability */
-		body {
-			font-family: sans-serif;
-			max-width: 800px;
-			margin: 2em auto;
-			padding: 0 1em;
-			line-height: 1.6;
+		html, body {
+			height: 100%;
 		}
-		img { max-width: 100%; height: auto; }
-		pre { background-color: #f4f4f4; padding: 1em; overflow-x: auto; }
-		code { font-family: monospace; }
+
+		body {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			font-family: Arial, sans-serif;
+			line-height: 1.6;
+			margin: 0;
+			padding: 20px;
+			background-color: #f9f9f9;
+		}
+
+		main {
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			align-items: flex-end;
+		}
+
+		h1 {
+			color: #333;
+		}
+
+		.blog-post {
+			max-width: 800px;
+			background: #fff;
+			padding: 20px;
+			border-radius: 8px;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			margin-bottom: 20px;
+		}
+
+		.blog-post h2 {
+			color: #444;
+			margin-top: 0;
+		}
+
+		.blog-post p {
+			color: #555;
+		}
+
+		code {
+			background: #f4f4f4;
+			padding: 2px 4px;
+			border-radius: 4px;
+			font-family: monospace;
+		}
 	</style>
 </head>
 <body>
-	<!--
-You can add style tags and also script:src tags into markdown
-if you use https://marketplace.cursorapi.com/items?itemName=fmoronzirfas.markdown-to-html
-It will be included into your html file
-Just make sure to keep a line break between the markdown tags and the style/script tags
--->
-<style>
-html,
-body {
-height: 100%;
-}
-
-body {
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-}
-main {
-height: 100%;
-display: flex;
-justify-content: center;
-flex-direction: column;
-align-items: flex-end;
-}
-</style>
-<h1>bubbles</h1>
-<main>
-<div id="sketch"></div>
-<script src="lib/p5.min.js"></script>
-<script src="index.js"></script>
-</main>
-
+	<h1>bubbles</h1>
+	<main>
+		<div id="sketch"></div>
+		<script src="lib/p5.min.js"></script>
+		<script src="index.js"></script>
+	</main>
 </body>
 </html>

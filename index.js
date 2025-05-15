@@ -17,10 +17,12 @@ function setup() {
   for (let i = 0; i < 5; i++) {
     createBubble();
   }
+    background(0,0,0); // Black background
+
 }
 
 function draw() {
-  background(0,0,0); // Black background
+  background(0,0, 0,0.01); // Black background
   
   // Randomly create new bubbles based on the creation rate
   if (random(1) < bubbleCreationRate) {
@@ -44,6 +46,14 @@ function draw() {
   //
 }
 
+
+function keyPressed() {
+	if (key === "S" || key === "s") {
+		save(`bubbles${Date.now()}.png`);
+	}
+	// make it possible to save the sketch as an image
+}
+
 function createBubble() {
   let x = random(width); // Random x position across the canvas
   let y = random(height); // Random y position across the canvas
@@ -55,23 +65,32 @@ function createBubble() {
   bubbles.push(new Bubble(x, y, size, speed, wobble, hue, opacity));
 }
 
+// Add a property to track merge time for each bubble
 class Bubble {
   constructor(x, y, size, speed, wobble, hue, opacity) {
     this.x = x;
     this.y = y;
-    this.size = size;
+    this.size = size; // <---
+
+
     this.speed = speed;
     this.wobble = wobble;
     this.hue = hue;
     this.opacity = opacity; // Initial opacity
     this.hasBurst = false;
+    this.mergeTimer = 0; // Timer to track how long the bubble has been close to another
   }
 
   update() {
     if (this.hasBurst) return;
 
+    if (this.size > 100) {
+      this.hasBurst = true;
+    }
+
+    this.size = this.size + 0.5
     // Gradually decrease opacity
-    this.opacity -= 0.002; // Adjust fade speed here
+    this.opacity -= .0002; // Adjust fade speed here
     if (this.opacity <= 0) {
       this.opacity = 0;
       this.hasBurst = true; // Mark as burst when fully faded
@@ -95,7 +114,7 @@ class Bubble {
     this.x += (nearestCluster.x - this.x) * attractionStrength;
     this.y += (nearestCluster.y - this.y) * attractionStrength;
 
-    // Prevent bubbles from fully touching each other
+    // Prevent bubbles from fully touching each other and handle merging
     for (let other of bubbles) {
       if (other === this || other.hasBurst) continue;
 
@@ -110,8 +129,36 @@ class Bubble {
         this.y += sin(angle) * overlap * 0.5;
         other.x -= cos(angle) * overlap * 0.5;
         other.y -= sin(angle) * overlap * 0.5;
+
+        // Start the merge timer if they are close
+        this.mergeTimer += deltaTime;
+        other.mergeTimer += deltaTime;
+
+        // Merge bubbles if they have been close for 3 seconds
+        if (this.mergeTimer > 100 && other.mergeTimer > 20) {
+          this.mergeWith(other);
+        }
+      } else {
+        // Reset the merge timer if they are no longer close
+        this.mergeTimer = 0;
+        other.mergeTimer = 0;
       }
     }
+  }
+
+  mergeWith(other) {
+    // Calculate the new position and size of the merged bubble
+    const newX = (this.x + other.x) / 2;
+    const newY = (this.y + other.y) / 2;
+    const newSize = this.size + other.size;
+
+    // Update this bubble to represent the merged bubble
+    this.x = newX;
+    this.y = newY;
+    this.size = newSize;
+
+    // Mark the other bubble as "burst" so it disappears
+    other.hasBurst = true;
   }
 
   display() {
@@ -119,7 +166,7 @@ class Bubble {
 
     noFill(); // No fill for the circle, making it a ring
     stroke(0, 0, 100, this.opacity); // Use stroke for the ring color
-    strokeWeight(1); // Adjust the thickness of the ring
+    strokeWeight(6); // Adjust the thickness of the ring
     circle(this.x, this.y, this.size);
   }
 }
