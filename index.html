@@ -109,7 +109,7 @@ figcaption{
         <h3>Inspiration hinter dem Code</h3>
         <p>Beim Beobachten der Natur fiel mir immer wieder das Verhalten von Wasser und dessen Schaum- und Blasenbildung, die durch starkes Aufprallen des Wasser auf die Oberfläche entstand. Also setzte ich mich an die ersten Versuche eine Simulation dieses Verhaltens darzustellen. </p>
         <img src="assets/IMG_3338 1.png" alt="blasen auf dem Wasser">
-        <p>Das Projekt ist inspiriert vom Prinzip des Ausgleichs der Oberflächenspannung. Die kleinen Blasen, die durch unterschiedliche Gase im Wasser entstehen, ziehen sich durch ihren hohen Innendruck gegenseitig an und bilden eine größere um die Oberflächenspannung zu entlasten und somit den Energieverbrauch zu minimieren. Erstellt wurde das Projekt mithilfe von der p5.js library
+        <p>Das Projekt ist inspiriert vom Prinzip des Ausgleichs der <a href ="https://de.wikipedia.org/wiki/Oberfl%C3%A4chenspannung">Oberflächenspannung</a>. Die kleinen Blasen, die durch unterschiedliche Gase im Wasser entstehen, ziehen sich durch ihren hohen Innendruck gegenseitig an und bilden eine größere um die Oberflächenspannung zu entlasten und somit den Energieverbrauch zu minimieren. Erstellt wurde das Projekt mithilfe von der p5.js library
 			Jede Blase auf dem sketch ist unabhängiges Objekt mit den Eigenschaften Position (<code>x</code>, <code>y</code>) und <code>size</code>.
 			Die Blasen sind nicht statisch; Sie bewegen sich. Ein Schlüsselelement ihrer Bewegung ist ihre Anziehung zu den vorherdefinierten  <code>clusterPoints</code>.Jede Blase identifiziert den nächsten cluster point und bewegt sich zu ihm. 
 			Die Geschwindigkeit der Anziehung kann mit der  <code>attractionStrength</code> angepasst werden.
@@ -119,8 +119,7 @@ figcaption{
 <code>bubbleCreationRate</code> beeinflusst, wie oft neue Blasen erstellt werden. Mit dem mergeTimer kann man verändern, wie lange die Blase beinander bleiben müssen, bevor sie sich vereinigen und mit der opacity modifiziert man, wie schnell die Blasen verschwinden. 
 		</p>
         <div id="sketch"></div> 
-  
-        <figcaption>hier die p5.js Simulation</figcaption> 
+
         <figcaption><a href="index.js">source code</a></figcaption>
         
         <h3>Interaktion und Verschmelzen</h3>
@@ -137,7 +136,7 @@ Um Überlappungen zu verhindern, gibt es eine Logik, die sie auseinanderhält. D
         
     </div>
     <main>
-        <div id="sketch"></div> 
+        
 		<script src="lib/p5.min.js"></script>
         <script src="index.js"></script>
     </main>
