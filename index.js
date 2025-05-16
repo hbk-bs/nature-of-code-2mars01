@@ -135,7 +135,7 @@ class Bubble {
         other.mergeTimer += deltaTime;
 
         // Merge bubbles if they have been close for 3 seconds
-        if (this.mergeTimer > 100 && other.mergeTimer > 20) {
+        if (this.mergeTimer > 100 && other.mergeTimer > 10) {
           this.mergeWith(other);
         }
       } else {

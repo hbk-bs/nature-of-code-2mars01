@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Bubbles</title>
+	<title>Bubbles Simulation</title>
 	<style>
 		/* Basic styles for readability */
 		html, body {
@@ -61,7 +61,39 @@
 	</style>
 </head>
 <body>
-	<h1>bubbles</h1>
+	<h1>Bubbles Simulation</h1>
+	<div class="blog-post">
+		<h2>Understanding the Bubble Simulation</h2>
+		<p>
+			Welcome to this interactive bubble simulation! This project demonstrates how simple rules can lead to complex and visually interesting behaviors. Let's dive into what's happening under the hood.
+		</p>
+		<h3>Core Bubble Behavior</h3>
+		<p>
+			Each bubble on the screen is an independent object with its own properties like position (<code>x</code>, <code>y</code>) and <code>size</code>.
+			The bubbles are not static; they are designed to move. A key aspect of their movement is their attraction to predefined <code>clusterPoints</code>. Each bubble identifies its nearest cluster point and gently moves towards it. The speed of this attraction can be tweaked using the <code>attractionStrength</code> variable.
+		</p>
+		<p>
+			Bubbles also have a lifecycle. They gradually increase in <code>size</code> over time. If a bubble grows too large (beyond a size of 100 in this case), it's considered to have "burst" and is removed from the simulation. Additionally, bubbles slowly fade out by decreasing their <code>opacity</code>. Once fully faded, they are also marked as burst.
+		</p>
+		<h3>Interaction and Merging</h3>
+		<p>
+			One of the most interesting parts of this simulation is how bubbles interact with each other. To prevent them from overlapping unnaturally, there's logic to push them apart if they get too close. This is calculated based on their respective sizes.
+		</p>
+		<p>
+			The merging process is controlled by a <code>mergeTimer</code>. When two bubbles are close, this timer starts for both. If they remain in close proximity for a specific duration (e.g., a few seconds, though this is adjustable), the <code>mergeWith</code> function is triggered. This function combines the two bubbles into a single, larger bubble. The new bubble's position is the average of the two originals, and its size is the sum of their sizes. If the bubbles move apart before the timer threshold is met, their individual <code>mergeTimer</code>s are reset.
+		</p>
+		<h3>Visuals and Drawing</h3>
+		<p>
+			The visual representation of the bubbles is handled by a <code>display</code> method within each bubble object. In this version, bubbles are drawn as rings (circles with no fill and a visible stroke). The <code>opacity</code> property, which decreases over time, is used to make the rings fade, adding to the visual effect of them disappearing.
+		</p>
+		<h3>Behind the Scenes with p5.js</h3>
+		<p>
+			This simulation likely uses a library like p5.js, which simplifies drawing on an HTML canvas and managing animations. Functions like <code>dist</code> (to calculate distance), <code>atan2</code>, <code>cos</code>, and <code>sin</code> (for calculating angles and movement vectors) are common in such graphical programming environments. The <code>deltaTime</code> variable, often provided by p5.js, helps ensure that animations and timers behave consistently regardless of the frame rate.
+		</p>
+		<p>
+			By adjusting parameters like <code>attractionStrength</code>, the merge timer thresholds, opacity fade speed, and initial bubble properties, you can significantly alter the overall look and feel of the simulation.
+		</p>
+	</div>
 	<main>
 		<div id="sketch"></div>
 		<script src="lib/p5.min.js"></script>
