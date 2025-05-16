@@ -1,103 +1,145 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"></html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Bubbles Simulation</title>
-	<style>
-		/* Basic styles for readability */
-		html, body {
-			height: 100%;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubbles Simulation</title>
+    <style>
+        /* Basic styles for readability */
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+			overflow: visible;
+			height: auto;
+        }
+
+        main {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+figcaption{
+    text-align: center;
+    font-size: 0.9em;
+    color: #666;
+    padding-bottom: 10px;
+}
+
+        h1, h2, h3 {
+            margin: 10px 0;
+            text-align: center;
+}
+        h1 {
+            color: #333;
+        }
+		img {
+            padding: 10px;
+			max-width: 100%;
+			height: auto;
+			display: block;
+			margin: 10px auto; /* Changed from 10px 0 to 10px auto */
 		}
 
-		body {
+		#sketch {
+			width: 100%;
+			height: 100%;
 			display: flex;
-			flex-direction: column;
 			justify-content: center;
 			align-items: center;
-			font-family: Arial, sans-serif;
-			line-height: 1.6;
-			margin: 0;
-			padding: 20px;
-			background-color: #f9f9f9;
-		}
-
-		main {
-			height: 100%;
-			display: flex;
-			justify-content: center;
-			flex-direction: column;
-			align-items: flex-end;
-		}
-
-		h1 {
-			color: #333;
-		}
-
-		.blog-post {
-			max-width: 800px;
-			background: #fff;
-			padding: 20px;
+			background-color: #eaeaea;
 			border-radius: 8px;
-			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-			margin-bottom: 20px;
 		}
 
-		.blog-post h2 {
-			color: #444;
-			margin-top: 0;
+		@media (max-width: 600px) {
+			body {
+				padding: 10px;
+			}
 		}
 
-		.blog-post p {
-			color: #555;
-		}
+        .blog-post {
+            max-width: 800px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-left: auto;   /* Added for centering .blog-post */
+            margin-right: auto;  /* Added for centering .blog-post */
+            margin-bottom: 20px;
+            overflow: hidden; /* Consider if this is truly needed; it can hide content. Use with caution. */
+            height: auto;
+        }
 
-		code {
-			background: #f4f4f4;
-			padding: 2px 4px;
-			border-radius: 4px;
-			font-family: monospace;
-		}
-	</style>
+        .blog-post h2 {
+            color: #444;
+            margin-top: 0;
+        }
+
+        .blog-post p {
+            color: #555;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+    </style>
 </head>
 <body>
-	<h1>Bubbles Simulation</h1>
-	<div class="blog-post">
-		<h2>Understanding the Bubble Simulation</h2>
-		<p>
-			Welcome to this interactive bubble simulation! This project demonstrates how simple rules can lead to complex and visually interesting behaviors. Let's dive into what's happening under the hood.
+    <h1>Exkursion Digitale Kommunikation 2025</h1>
+    <div class="blog-post">
+        <h2>Nature of Code</h2>
+        <p>
+    Inspiriert von dem Buch "Nature of Code" von Daniel Shiffman, zeigt dieses Projekt wie einfache Regeln zu komplexen und visuell-interessanten Ergebnissen führen können. Trotz nicht Teilnehmens an der Exkursion, habe ich mich auch in die Natur begeben und ein bisschen Ausschau nach interessanten natürlichen Verhalten gehalten. Ich war dafür in Goslar und in Braunschweig unterwegs.  
+        </p>
+        <h3>Inspiration hinter dem Code</h3>
+        <p>Beim Beobachten der Natur fiel mir immer wieder das Verhalten von Wasser und dessen Schaum- und Blasenbildung, die durch starkes Aufprallen des Wasser auf die Oberfläche entstand. Also setzte ich mich an die ersten Versuche eine Simulation dieses Verhaltens darzustellen. </p>
+        <img src="assets/IMG_3338 1.png" alt="blasen auf dem Wasser">
+        <p>Das Projekt ist inspiriert vom Prinzip des Ausgleichs der Oberflächenspannung. Die kleinen Blasen, die durch unterschiedliche Gase im Wasser entstehen, ziehen sich durch ihren hohen Innendruck gegenseitig an und bilden eine größere um die Oberflächenspannung zu entlasten und somit den Energieverbrauch zu minimieren. Erstellt wurde das Projekt mithilfe von der p5.js library
+			Jede Blase auf dem sketch ist unabhängiges Objekt mit den Eigenschaften Position (<code>x</code>, <code>y</code>) und <code>size</code>.
+			Die Blasen sind nicht statisch; Sie bewegen sich. Ein Schlüsselelement ihrer Bewegung ist ihre Anziehung zu den vorherdefinierten  <code>clusterPoints</code>.Jede Blase identifiziert den nächsten cluster point und bewegt sich zu ihm. 
+			Die Geschwindigkeit der Anziehung kann mit der  <code>attractionStrength</code> angepasst werden.
+        </p>
+        <p>
+			Andere Möglichkeiten den sketch zu verändern, wären die Variablen <code>bubbleCreationRate</code>, <code>mergeTimer</code> und <code>opacity</code>. 
+<code>bubbleCreationRate</code> beeinflusst, wie oft neue Blasen erstellt werden. Mit dem mergeTimer kann man verändern, wie lange die Blase beinander bleiben müssen, bevor sie sich vereinigen und mit der opacity modifiziert man, wie schnell die Blasen verschwinden. 
 		</p>
-		<h3>Core Bubble Behavior</h3>
-		<p>
-			Each bubble on the screen is an independent object with its own properties like position (<code>x</code>, <code>y</code>) and <code>size</code>.
-			The bubbles are not static; they are designed to move. A key aspect of their movement is their attraction to predefined <code>clusterPoints</code>. Each bubble identifies its nearest cluster point and gently moves towards it. The speed of this attraction can be tweaked using the <code>attractionStrength</code> variable.
-		</p>
-		<p>
-			Bubbles also have a lifecycle. They gradually increase in <code>size</code> over time. If a bubble grows too large (beyond a size of 100 in this case), it's considered to have "burst" and is removed from the simulation. Additionally, bubbles slowly fade out by decreasing their <code>opacity</code>. Once fully faded, they are also marked as burst.
-		</p>
-		<h3>Interaction and Merging</h3>
-		<p>
-			One of the most interesting parts of this simulation is how bubbles interact with each other. To prevent them from overlapping unnaturally, there's logic to push them apart if they get too close. This is calculated based on their respective sizes.
-		</p>
-		<p>
-			The merging process is controlled by a <code>mergeTimer</code>. When two bubbles are close, this timer starts for both. If they remain in close proximity for a specific duration (e.g., a few seconds, though this is adjustable), the <code>mergeWith</code> function is triggered. This function combines the two bubbles into a single, larger bubble. The new bubble's position is the average of the two originals, and its size is the sum of their sizes. If the bubbles move apart before the timer threshold is met, their individual <code>mergeTimer</code>s are reset.
-		</p>
-		<h3>Visuals and Drawing</h3>
-		<p>
-			The visual representation of the bubbles is handled by a <code>display</code> method within each bubble object. In this version, bubbles are drawn as rings (circles with no fill and a visible stroke). The <code>opacity</code> property, which decreases over time, is used to make the rings fade, adding to the visual effect of them disappearing.
-		</p>
-		<h3>Behind the Scenes with p5.js</h3>
-		<p>
-			This simulation likely uses a library like p5.js, which simplifies drawing on an HTML canvas and managing animations. Functions like <code>dist</code> (to calculate distance), <code>atan2</code>, <code>cos</code>, and <code>sin</code> (for calculating angles and movement vectors) are common in such graphical programming environments. The <code>deltaTime</code> variable, often provided by p5.js, helps ensure that animations and timers behave consistently regardless of the frame rate.
-		</p>
-		<p>
-			By adjusting parameters like <code>attractionStrength</code>, the merge timer thresholds, opacity fade speed, and initial bubble properties, you can significantly alter the overall look and feel of the simulation.
-		</p>
-	</div>
-	<main>
-		<div id="sketch"></div>
+        <div id="sketch"></div> 
+  
+        <figcaption>hier die p5.js Simulation</figcaption> 
+        <figcaption><a href="index.js">source code</a></figcaption>
+        
+        <h3>Interaktion und Verschmelzen</h3>
+        <p>
+            Einer der interessantesten Teiler der Simulation, ist wie die Blasen miteinander agieren. 
+Um Überlappungen zu verhindern, gibt es eine Logik, die sie auseinanderhält. Dies wird anhand der jeweiligen Größen berechnet. 
+        <p>
+			Der "Verschmelzprozess" wird durch den  <code>mergeTimer</code> geregelt. Der Timer startet sobald sich zwei Blasen nähern. Falls sie also für ein paar Sekunden in ihrer Nähe bleiben, wird die  <code>mergeWith</code> ausgelöst. Diese Funktion kombiniert die zwei Blasen zu einer größeren Blase. Die Größe berechnet sich aus der Summe der zwei kleineren Blasen. 
+			<figure><img src="assets/bubbles1747229246677 1.png" alt="bubbles"></figure> <figcaption>bei dieser Variante des Codes generiert sich der Hintergrund nur langsam und mit reduzierter opacity</figcaption> <figure><img src="assets/bubbles1747229404108 1.png" alt="bubbles thicker"></figure><figcaption>hier ist die Dicke des Strichs erhöht und ebenfalls nur langsame Generierung des Hintergrunds eingestellt, außerdem ist der mergeTimer erhöht, wodurch die "Blasen" länger brauchen um ineinander überzugehen.</figcaption>
+        </p>
+
+    
+           
+        
+    </div>
+    <main>
+        <div id="sketch"></div> 
 		<script src="lib/p5.min.js"></script>
-		<script src="index.js"></script>
-	</main>
+        <script src="index.js"></script>
+    </main>
 </body>
 </html>

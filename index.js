@@ -3,26 +3,24 @@ let bubbleCreationRate = 0.015; // Initial chance of creating a new bubble each 
 let clusterPoints = []; // Initialize as an empty array
 
 function setup() {
-  createCanvas(600, 600);
-  colorMode(HSB, 360, 100, 100, 1);
+    let canvas = createCanvas(600, 600);
+    canvas.parent("sketch"); // Attach the canvas to the #sketch div
+    colorMode(HSB, 360, 100, 100, 1);
 
-  // Define cluster points after canvas is created
-  clusterPoints = [
-    { x: width / 4, y: height / 4 },
-    { x: (3 * width) / 4, y: height / 4 },
-    { x: width / 2, y: (3 * height) / 4 }
-  ];
+    clusterPoints = [
+        { x: width / 4, y: height / 4 },
+        { x: (3 * width) / 4, y: height / 4 },
+        { x: width / 2, y: (3 * height) / 4 }
+    ];
 
-  // Start with a few initial bubbles
-  for (let i = 0; i < 5; i++) {
-    createBubble();
-  }
-    background(0,0,0); // Black background
-
+    for (let i = 0; i < 5; i++) {
+        createBubble();
+    }
+    background(0, 0, 0);
 }
 
 function draw() {
-  background(0,0, 0,0.01); // Black background
+  background(0,0, 0,); // Black background
   
   // Randomly create new bubbles based on the creation rate
   if (random(1) < bubbleCreationRate) {
@@ -84,13 +82,13 @@ class Bubble {
   update() {
     if (this.hasBurst) return;
 
-    if (this.size > 100) {
+    if (this.size > 200) {
       this.hasBurst = true;
     }
 
     this.size = this.size + 0.5
     // Gradually decrease opacity
-    this.opacity -= .0002; // Adjust fade speed here
+    this.opacity -= .0001; // Fade speed is now slower
     if (this.opacity <= 0) {
       this.opacity = 0;
       this.hasBurst = true; // Mark as burst when fully faded
@@ -110,7 +108,7 @@ class Bubble {
     }
 
     // Move the bubble toward the nearest cluster point
-    const attractionStrength = 0.02; // Adjust this value to control clustering speed
+    const attractionStrength = 0.01; // Adjust this value to control clustering speed
     this.x += (nearestCluster.x - this.x) * attractionStrength;
     this.y += (nearestCluster.y - this.y) * attractionStrength;
 
@@ -135,7 +133,7 @@ class Bubble {
         other.mergeTimer += deltaTime;
 
         // Merge bubbles if they have been close for 3 seconds
-        if (this.mergeTimer > 100 && other.mergeTimer > 10) {
+        if (this.mergeTimer > 10 && other.mergeTimer > 20) {
           this.mergeWith(other);
         }
       } else {
@@ -166,7 +164,7 @@ class Bubble {
 
     noFill(); // No fill for the circle, making it a ring
     stroke(0, 0, 100, this.opacity); // Use stroke for the ring color
-    strokeWeight(6); // Adjust the thickness of the ring
+    strokeWeight(3); // Adjust the thickness of the ring
     circle(this.x, this.y, this.size);
   }
 }
