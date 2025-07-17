@@ -68,7 +68,7 @@ class Bubble {
   constructor(x, y, size, speed, wobble, hue, opacity) {
     this.x = x;
     this.y = y;
-    this.size = size; // <---
+    this.size = size;
 
 
     this.speed = speed;
@@ -86,7 +86,6 @@ class Bubble {
       this.hasBurst = true;
     }
 
-    this.size = this.size + 0.5
     // Gradually decrease opacity
     this.opacity -= .0001; // Fade speed is now slower
     if (this.opacity <= 0) {
@@ -132,7 +131,7 @@ class Bubble {
         this.mergeTimer += deltaTime;
         other.mergeTimer += deltaTime;
 
-        // Merge bubbles if they have been close for 3 seconds
+        // Merge bubbles if they have been close for a few seconds
         if (this.mergeTimer > 10 && other.mergeTimer > 20) {
           this.mergeWith(other);
         }
@@ -148,7 +147,7 @@ class Bubble {
     // Calculate the new position and size of the merged bubble
     const newX = (this.x + other.x) / 2;
     const newY = (this.y + other.y) / 2;
-    const newSize = this.size + other.size;
+    const newSize = this.size + other.size; // Bubbles grow by combining size here
 
     // Update this bubble to represent the merged bubble
     this.x = newX;
