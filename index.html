@@ -5,73 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bubbles Simulation</title>
     <style>
-        /* All your styles go here */
-        #backlink {
-            --color-accent: hsl(198, 100%, 50%);
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            border: 1px dashed black;
-            background-color: white;
-            padding: 8px;
-            cursor: pointer;
-            color: black;
-            font-size: 0.8rem;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            transform: rotate(-2deg) scale(0.9);
-            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-            z-index: 100; /* Ensure it's on top */
-        }
-
-        #backlink a { /* Target the link inside the div */
-            text-decoration: none;
-            color: inherit;
-            text-decoration: underline;
-            background-image: linear-gradient(to right,
-                    var(--color-accent) 0%,
-                    var(--color-accent) 100%);
-            background-size: 0% 100%;
-            background-position: left center;
-            background-repeat: no-repeat;
-            transition: background-size 0.2s ease-in-out;
-            padding: 0.5rem;
-        }
-
-        #backlink a:hover {
-            background-size: 100% 100%;
-            color: white;
-        }
-
-        #backlink:hover {
-            transform: rotate(2deg) scale(1);
-        }
-
-        /* Basic styles for readability */
-        html, body {
+        /* Mobile-first styles */
+        html {
             height: 100%;
         }
 
         body {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            align-items: center; /* Center content horizontally */
             font-family: Arial, sans-serif;
             line-height: 1.6;
             margin: 0;
-            padding: 20px;
+            padding: 15px; /* Base padding for mobile */
             background-color: #f9f9f9;
-            overflow: visible;
-            height: auto;
+            width: 100%;
+            min-height: 100%;
+            box-sizing: border-box; /* Makes padding and border part of the element's total width and height */
         }
 
         main {
-            height: 100%;
+            width: 100%;
+            max-width: 600px; /* Limit the width of the sketch container */
             display: flex;
             justify-content: center;
-            flex-direction: column;
-            align-items: flex-end;
+            align-items: center; /* Center the sketch inside */
+            margin-top: 20px;
         }
 
         figcaption {
@@ -81,118 +40,60 @@
             padding-bottom: 10px;
         }
 
-        h1, h2, h3 {
-            margin: 10px 0;
-            text-align: center;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        img {
-            padding: 10px;
+        /* Add this rule to make images responsive */
+        img, video {
             max-width: 100%;
             height: auto;
-            display: block;
-            margin: 10px auto; /* Changed from 10px 0 to 10px auto */
         }
 
-        #sketch {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #eaeaea;
-            border-radius: 8px;
-        }
-
-        @media (max-width: 600px) {
+        /* Add this media query for larger screens */
+        @media (min-width: 768px) {
             body {
-                padding: 10px;
-            }
-        }
-
-        .blog-post {
-            max-width: 800px;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-left: auto;   /* Added for centering .blog-post */
-            margin-right: auto;  /* Added for centering .blog-post */
-            margin-bottom: 20px;
-            overflow: hidden; /* Consider if this is truly needed; it can hide content. Use with caution. */
-            height: auto;
-        }
-
-        .blog-post h2 {
-            color: #444;
-            margin-top: 0;
-        }
-
-        .blog-post p {
-            color: #555;
-        }
-
-        code {
-            background: #f4f4f4;
-            padding: 2px 4px;
-            border-radius: 4px;
-            font-family: monospace;
-        }
-
-        /* Add these styles for mobile responsiveness */
-        @media (max-width: 768px) {
-            body {
-                padding: 10px; /* Reduce padding on smaller screens */
-            }
-
-            .blog-post {
-                padding: 15px; /* Adjust padding for the blog post */
-            }
-
-            h1 {
-                font-size: 1.8rem; /* Adjust heading font size */
-            }
-
-            h2 {
-                font-size: 1.5rem;
-            }
-
-            #sketch {
-                /* Ensure the sketch container doesn't create horizontal scroll */
-                width: 100%;
-            }
-
-            #backlink {
-                font-size: 0.75rem; /* Adjust font size for smaller screens */
-                padding: 12px;      /* Increase padding to make it easier to tap */
-                top: 5px;
-                right: 5px;
+                padding: 25px; /* Increase padding for more space on desktops */
             }
         }
     </style>
 </head>
 <body>
-    <div id="backlink">
-        <a href="https://rundgang2025.qawsed.site">Back to the Rundgang 2025</a>
-    </div>
     <h1>Exkursion Digitale Kommunikation 2025</h1>
     <div class="blog-post">
         <h2>Nature of Code</h2>
         <p>
-            Inspiriert von dem Buch "Nature of Code" von Daniel Shiffman, zeigt dieses Projekt wie einfache Regeln zu komplexen und visuell-interessanten Ergebnissen führen können. Trotz nicht Teilnehmens an der Exkursion, habe ich mich auch in die Natur begeben und ein bisschen Ausschau nach interessanten natürlichen Verhalten gehalten. Ich war dafür in Goslar und in Braunschweig unterwegs.
+    Inspiriert von dem Buch "Nature of Code" von Daniel Shiffman, zeigt dieses Projekt wie einfache Regeln zu komplexen und visuell-interessanten Ergebnissen führen können. Trotz nicht Teilnehmens an der Exkursion, habe ich mich auch in die Natur begeben und ein bisschen Ausschau nach interessanten natürlichen Verhalten gehalten. Ich war dafür in Goslar und in Braunschweig unterwegs.  
         </p>
         <h3>Inspiration hinter dem Code</h3>
         <p>Beim Beobachten der Natur fiel mir immer wieder das Verhalten von Wasser und dessen Schaum- und Blasenbildung, die durch starkes Aufprallen des Wasser auf die Oberfläche entstand. Also setzte ich mich an die ersten Versuche eine Simulation dieses Verhaltens darzustellen. </p>
         <img src="assets/IMG_3338 1.png" alt="blasen auf dem Wasser">
         <p>Das Projekt ist inspiriert vom Prinzip des Ausgleichs der <a href ="https://de.wikipedia.org/wiki/Oberfl%C3%A4chenspannung">Oberflächenspannung</a>. Die kleinen Blasen, die durch unterschiedliche Gase im Wasser entstehen, ziehen sich durch ihren hohen Innendruck gegenseitig an und bilden eine größere um die Oberflächenspannung zu entlasten und somit den Energieverbrauch zu minimieren. Erstellt wurde das Projekt mithilfe von der p5.js library
-            Jede Blase auf dem sketch ist unabhängiges Objekt mit den Eigenschaften Position (<code>x</code>, <code>y</code>) und <code>size</code>.
-            Die Blasen sind nicht statisch; Sie bewegen sich. Ein Schlüsselelement ihrer Bewegung ist ihre Anziehung zu den vorherdefinierten  <code>clusterPoints</code>.Jede Blase identifiziert den nächsten cluster point und bewegt sich zu ihm.
-            Die Geschwindigkeit der Anziehung kann mit der  <code>attractionStrength</code> angepasst werden.
+			Jede Blase auf dem sketch ist unabhängiges Objekt mit den Eigenschaften Position (<code>x</code>, <code>y</code>) und <code>size</code>.
+			Die Blasen sind nicht statisch; Sie bewegen sich. Ein Schlüsselelement ihrer Bewegung ist ihre Anziehung zu den vorherdefinierten  <code>clusterPoints</code>.Jede Blase identifiziert den nächsten cluster point und bewegt sich zu ihm. 
+			Die Geschwindigkeit der Anziehung kann mit der  <code>attractionStrength</code> angepasst werden.
         </p>
         <p>
-            Andere Möglichkeiten den sketch zu verändern, wären die Variablen <code>bubbleCreationRate</code>, <code>mergeTimer</code> und <code>opacity</code>.
-            <code>bubbleCreationRate</code> beeinflusst, wie oft neue Blasen erstellt werden. Mit dem mergeTimer kann
+			Andere Möglichkeiten den sketch zu verändern, wären die Variablen <code>bubbleCreationRate</code>, <code>mergeTimer</code> und <code>opacity</code>. 
+<code>bubbleCreationRate</code> beeinflusst, wie oft neue Blasen erstellt werden. Mit dem mergeTimer kann man verändern, wie lange die Blase beinander bleiben müssen, bevor sie sich vereinigen und mit der opacity modifiziert man, wie schnell die Blasen verschwinden. 
+		</p>
+        <div id="sketch"></div> 
+
+        <figcaption><a href="index.js">source code</a></figcaption>
+        
+        <h3>Interaktion und Verschmelzen</h3>
+        <p>
+            Einer der interessantesten Teiler der Simulation, ist wie die Blasen miteinander agieren. 
+Um Überlappungen zu verhindern, gibt es eine Logik, die sie auseinanderhält. Dies wird anhand der jeweiligen Größen berechnet. 
+        <p>
+			Der "Verschmelzprozess" wird durch den  <code>mergeTimer</code> geregelt. Der Timer startet sobald sich zwei Blasen nähern. Falls sie also für ein paar Sekunden in ihrer Nähe bleiben, wird die  <code>mergeWith</code> ausgelöst. Diese Funktion kombiniert die zwei Blasen zu einer größeren Blase. Die Größe berechnet sich aus der Summe der zwei kleineren Blasen. 
+			<figure><img src="assets/bubbles1747229246677 1.png" alt="bubbles"></figure> <figcaption>bei dieser Variante des Codes generiert sich der Hintergrund nur langsam und mit reduzierter opacity</figcaption> <figure><img src="assets/bubbles1747229404108 1.png" alt="bubbles thicker"></figure><figcaption>hier ist die Dicke des Strichs erhöht und ebenfalls nur langsame Generierung des Hintergrunds eingestellt, außerdem ist der mergeTimer erhöht, wodurch die "Blasen" länger brauchen um ineinander überzugehen.</figcaption>
+        </p>
+
+    
+           
+        
+    </div>
+    <main>
+        <div id="sketch"></div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+        <script src="index.js"></script>
+    </main>
+</body>
+</html>
