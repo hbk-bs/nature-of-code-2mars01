@@ -142,6 +142,30 @@ figcaption{
             border-radius: 4px;
             font-family: monospace;
         }
+
+        /* Add these styles for mobile responsiveness */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px; /* Reduce padding on smaller screens */
+            }
+
+            .blog-post {
+                padding: 15px; /* Adjust padding for the blog post */
+            }
+
+            h1 {
+                font-size: 1.8rem; /* Adjust heading font size */
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            #sketch {
+                /* Ensure the sketch container doesn't create horizontal scroll */
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
